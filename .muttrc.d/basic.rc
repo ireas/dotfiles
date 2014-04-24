@@ -1,0 +1,17 @@
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/.mutt/certificates
+
+set editor="vim -c 'startinsert' -c 'set tw=70 et' -c 'set wrap'" 
+set use_from
+
+set move = no
+set mail_check = 60
+set timeout = 15
+set date_format = "%Y-%m-%d %H:%M:%S %Z"
+
+bind index G imap-fetch-mail
+
+set query_command="pc_query -m '%s'"
+bind editor <Tab> complete-query
+

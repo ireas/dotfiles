@@ -9,6 +9,8 @@ set move = no
 set mail_check = 60
 set timeout = 15
 set date_format = "%Y-%m-%d %H:%M:%S %Z"
+set index_format = "%4C %Z %{%Y-%m-%d} %-20.20L (%?l?%4l&%4c?) %s"
+set display_filter = "~/bin/mutt-display-filter"
 
 bind index G imap-fetch-mail
 

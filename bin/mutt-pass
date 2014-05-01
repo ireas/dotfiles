@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [[ "$#" -ne 2 ]]
+then
+    echo "USAGE:  mutt-pass [pass-name] [variable-name]"
+    echo "    pass-name     name of the pass item to use"
+    echo "    variable-name name of the mutt configuration variable"
+    exit 1
+fi
+
+PASS_NAME="$1"
+VARIABLE_NAME="$2"
+
+if [[ -f `which pass` ]]
+then
+    pass "$PASS_NAME" >/dev/null 2>&1
+    if [[ $? -eq 0 ]]
+    then
+        PASS=$(pass "$PASS_NAME" | head -n 1)
+        echo "set $VARIABLE_NAME $PASS"
+    fi
+fi
+

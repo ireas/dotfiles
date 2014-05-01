@@ -1,0 +1,21 @@
+#!/bin/bash
+
+TMPFILE=$(mktemp)
+cat - > "$TMPFILE"
+
+DATE=$(formail -xDate: < "$TMPFILE")
+DATE=$(date -d "$DATE" +"%Y-%m-%d %H:%M:%S %z")
+echo "Date: $DATE"
+
+FROM=$(formail -xFrom: < "$TMPFILE")
+FROM_EMAIL=$(echo "$FROM" | sed -r 's/.*\s+<(.*)>/\1/')
+FROM_AB=$(pc_query $FROM_EMAIL|grep "Name:"|sed 's/Name: //')
+if [ -n "$FROM_AB" ]
+then
+    FROM="$FROM_AB <$FROM_EMAIL>"
+fi
+echo "From: $FROM"
+
+formail -fI Date -I From < "$TMPFILE"
+rm -f $TMPFILE
+

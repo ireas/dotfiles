@@ -17,7 +17,7 @@ then
     if [[ $? -eq 0 ]]
     then
         PASS=$(pass "$PASS_NAME" | head -n 1)
-        echo "set $VARIABLE_NAME $PASS"
+        echo "set $VARIABLE_NAME = \"$PASS\""
     fi
 fi
 

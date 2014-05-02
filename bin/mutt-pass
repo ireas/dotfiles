@@ -13,11 +13,10 @@ VARIABLE_NAME="$2"
 
 if [[ -f `which pass` ]]
 then
-    pass "$PASS_NAME" >/dev/null 2>&1
+    PASS=$(pass "$PASS_NAME" 2>/dev/null)
     if [[ $? -eq 0 ]]
     then
-        PASS=$(pass "$PASS_NAME" | head -n 1)
-        echo "set $VARIABLE_NAME = \"$PASS\""
+        echo "set $VARIABLE_NAME = \"`echo -e \"$PASS\" | head -n 1`\""
     fi
 fi
 

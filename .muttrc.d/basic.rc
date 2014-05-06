@@ -4,6 +4,8 @@ set certificate_file = ~/.mutt/certificates
 
 set editor="vim -c 'startinsert' -c 'set tw=70 et' -c 'set wrap'" 
 set use_from
+set reverse_name
+unset reverse_realname
 
 set move = no
 set mail_check = 60

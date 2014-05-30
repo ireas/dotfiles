@@ -1,3 +1,4 @@
+source ~/.muttrc.d/alias.rc
 source ~/.muttrc.d/basic.rc
 source ~/.muttrc.d/gpg.rc
 source ~/.muttrc.d/gpg.ireas.rc
